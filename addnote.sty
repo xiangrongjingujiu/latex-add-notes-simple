@@ -1,0 +1,13 @@
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{addnote}[add notes]
+\RequirePackage{xcolor} % color names:black, blue, brown, cyan, darkgray, gray, green, lightgray, lime, magenta, olive, orange, pink, purple, red, teal, violet, white, yellow
+\RequirePackage{xkeyval} % use color=red as option for package
+\newcommand{\@addnote@color}{red}
+\DeclareOptionX{color}{\renewcommand{\@addnote@color}{#1}}
+\newcommand{\add}[1]{\textcolor{\@addnote@color}{{#1}}}
+\DeclareOption{hide}{\renewcommand{\add}[1]{{}}}
+
+\DeclareOption*{\PackageWarning{addnote}{Unknown ‘\CurrentOption’}}
+\ProcessOptions\relax
+\DeclareOptionX*{\PackageWarning{addnote}{Unknown ‘\CurrentOption’}}
+\ProcessOptionsX\relax
